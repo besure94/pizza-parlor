@@ -6,23 +6,37 @@ function Pizza(toppings, size) {
 
 Pizza.prototype.calculateCost = function() {
 	if (this.size === "small") {
-		this.cost += 10;
-	} else if (this.size === "medium") {
-		this.cost += 12;
-	} else if (this.size === "large") {
 		this.cost += 14;
-	}
-	if (this.toppings.includes("pepperoni")) {
-		this.cost += 1;
+	} else if (this.size === "medium") {
+		this.cost += 16;
+	} else if (this.size === "large") {
+		this.cost += 18;
 	}
 	return this.cost;
 }
 
-const pizza = new Pizza(["pepperoni", "sausage", "pineapple"], "medium");
-// let pizza = new Pizza();
+// const pizza = new Pizza(["pepperoni", "sausage", "pineapple"], "medium");
+let pizza = new Pizza();
 
-console.log(pizza);
-pizza.calculateCost();
-console.log(pizza);
-pizza.calculateCost();
+// console.log(pizza);
+// pizza.calculateCost();
+// console.log(pizza);
+// pizza.calculateCost();
 
+// function displayPizzaCost() {
+// 	document.querySelector(".order-total").innerText = "$" + pizza.cost;
+// 	document.querySelector("div#pizza-cost").removeAttribute("class");
+// }
+
+function handleFormSubmission(event) {
+	event.preventDefault();
+	const inputtedToppings = document.querySelectorAll("input[name='topping']:checked");
+	const inputtedSize = document.querySelector("input[name='size']:checked").value;
+	let newPizza = new Pizza(inputtedToppings, inputtedSize);
+	newPizza.calculateCost();
+	console.log(newPizza);
+}
+
+window.addEventListener("load", function() {
+	document.querySelector("form#new-pizza").addEventListener("submit", handleFormSubmission);
+});
