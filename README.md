@@ -2,8 +2,7 @@
 	* Constructor should contain toppings that the user can select.
 	* Constructor should also contain sizes that the user can select.
 2. There needs to be a prototype method that determines the cost based on what is selected.
-	* Prototype should determine size based on toppings chosen.
-	* Prototype should also determine size based on size chozen.
+	* Prototype should determine size based on size chozen.
 
 Describe: Pizza()
 
@@ -21,9 +20,9 @@ pizza.calculateCost();
 pizza.calculateCost(const pizza = new Pizza(["pepperoni", "sausage", "pineapple"], medium));
 Expected Output: 12;
 
-Test: "The method should determine the cost of a pizza based on the selected toppings."
+<!-- Test: "The method should determine the cost of a pizza based on the selected toppings."
 Code:
 const pizza = new Pizza(["pepperoni", "sausage", "pineapple"], medium);
 pizza.calculateCost();
 pizza.calculateCost(const pizza = new Pizza(["pepperoni", "sausage", "pineapple"], medium));
-Expected Output: 13;
+Expected Output: 13; -->
