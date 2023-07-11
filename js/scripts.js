@@ -12,6 +12,9 @@ Pizza.prototype.calculateCost = function() {
 	} else if (this.size === "large") {
 		this.cost += 14;
 	}
+	if (this.toppings.includes("pepperoni")) {
+		this.cost += 1;
+	}
 	return this.cost;
 }
 
@@ -21,4 +24,5 @@ const pizza = new Pizza(["pepperoni", "sausage", "pineapple"], "medium");
 console.log(pizza);
 pizza.calculateCost();
 console.log(pizza);
+pizza.calculateCost();
 
