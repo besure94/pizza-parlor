@@ -7,7 +7,16 @@
 
 Describe: Pizza()
 
-Test: "It should return a Pizza object with properties for toppings."
+Test: "It should return a Pizza object with properties for toppings and size."
 Code:
-const myPizza = new Pizza(["pepperoni", "sausage", "pineapple"], medium);
+const pizza = new Pizza(["pepperoni", "sausage", "pineapple"], "medium");
 Expected Output: Pizza { toppings: ["pepperoni", "sausage", "pineapple"], size: "medium"};
+
+Describe: calculateCost()
+
+Test: "It should contain a method that determines the cost of a pizza based on the selected size."
+Code:
+const pizza = new Pizza(["pepperoni", "sausage", "pineapple"], "medium");
+pizza.calculateCost();
+pizza.calculateCost(const pizza = new Pizza(["pepperoni", "sausage", "pineapple"], medium));
+Expected Output: 12;
