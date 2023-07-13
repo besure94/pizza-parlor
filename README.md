@@ -20,9 +20,9 @@ pizza.calculateCost();
 pizza.calculateCost(const pizza = new Pizza(["pepperoni", "sausage", "pineapple"], medium));
 Expected Output: 12;
 
-<!-- Test: "The method should determine the cost of a pizza based on the selected toppings."
+Test: "The method should determine the cost of a pizza based on the selected toppings."
 Code:
 const pizza = new Pizza(["pepperoni", "sausage", "pineapple"], medium);
 pizza.calculateCost();
 pizza.calculateCost(const pizza = new Pizza(["pepperoni", "sausage", "pineapple"], medium));
-Expected Output: 13; -->
+Expected Output: 13;
