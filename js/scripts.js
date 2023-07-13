@@ -15,7 +15,7 @@ Pizza.prototype.calculateCost = function() {
 		this.cost += 20;
 	if (this.toppings.includes("pepperoni") && this.toppings.includes("sausage") && this.toppings.includes("pineapple")) {
 		this.cost += 3;
-	} else if (this.toppings.includes("pepperoni") && this.toppings.includes("sausage")) {
+	} else if (this.toppings.includes("pepperoni") && this.toppings.includes("sausage") || this.toppings.includes("pineapple") && this.toppings.includes("sausage") || this.toppings.includes("pineapple") && this.toppings.includes("pepperoni")) {
 		this.cost += 2;
 	} else if (this.toppings.includes("pepperoni") || this.toppings.includes("sausage") || this.toppings.includes("pineapple")) {
 		this.cost += 1;
@@ -23,36 +23,19 @@ Pizza.prototype.calculateCost = function() {
 	return this.cost;
 }
 
-const pizza = new Pizza(["pineapple"], "small");
-console.log(pizza);
-pizza.calculateCost();
-console.log(pizza);
-// let pizza = new Pizza();
-
-function displayPizzaCost() {
-	document.querySelector(".order-total").innerText = "$" + pizza.cost;
-	document.querySelector("div#pizza-cost").removeAttribute("class");
-}
-
 function handleFormSubmission(event) {
 	event.preventDefault();
-	// gather toppings and size
 	const inputtedToppings = document.querySelectorAll("input[name=topping]:checked");
 	const inputtedToppingsArray = Array.from(inputtedToppings);
-	console.log(inputtedToppingsArray);
 	const inputtedSize = document.querySelector("input[name='size']:checked").value;
-	// create pizza and calculate cost
 	const newToppingsArray = [];
 	inputtedToppingsArray.forEach(function(element) {
 		newToppingsArray.push(element.value);
 	});
-	// use forEach to display toppings in pizza object
 	let newPizza = new Pizza(newToppingsArray, inputtedSize);
 	newPizza.calculateCost();
-	// after cost is calculated, display cost
+	document.querySelector(".order-total").innerText = "Your pizza costs: " + "$" + newPizza.cost;
 	document.querySelector("div#pizza-cost").removeAttribute("class");
-	console.log(newPizza);
-	// displayPizzaCost();
 }
 
 window.addEventListener("load", function() {
