@@ -13,29 +13,46 @@ Pizza.prototype.calculateCost = function() {
 		this.cost += 18;
 	} else if (this.size === "extra large")
 		this.cost += 20;
+	if (this.toppings.includes("pepperoni") && this.toppings.includes("sausage") && this.toppings.includes("pineapple")) {
+		this.cost += 3;
+	} else if (this.toppings.includes("pepperoni") && this.toppings.includes("sausage")) {
+		this.cost += 2;
+	} else if (this.toppings.includes("pepperoni") || this.toppings.includes("sausage") || this.toppings.includes("pineapple")) {
+		this.cost += 1;
+	}
 	return this.cost;
 }
 
-// const pizza = new Pizza(["pepperoni", "sausage", "pineapple"], "medium");
-let pizza = new Pizza();
+const pizza = new Pizza(["pineapple"], "small");
+console.log(pizza);
+pizza.calculateCost();
+console.log(pizza);
+// let pizza = new Pizza();
 
-// console.log(pizza);
-// pizza.calculateCost();
-// console.log(pizza);
-// pizza.calculateCost();
-
-// function displayPizzaCost() {
-// 	document.querySelector(".order-total").innerText = "$" + pizza.cost;
-// 	document.querySelector("div#pizza-cost").removeAttribute("class");
-// }
+function displayPizzaCost() {
+	document.querySelector(".order-total").innerText = "$" + pizza.cost;
+	document.querySelector("div#pizza-cost").removeAttribute("class");
+}
 
 function handleFormSubmission(event) {
 	event.preventDefault();
-	const inputtedToppings = document.querySelectorAll("input[name='topping']:checked");
+	// gather toppings and size
+	const inputtedToppings = document.querySelectorAll("input[name=topping]:checked");
+	const inputtedToppingsArray = Array.from(inputtedToppings);
+	console.log(inputtedToppingsArray);
 	const inputtedSize = document.querySelector("input[name='size']:checked").value;
-	let newPizza = new Pizza(inputtedToppings, inputtedSize);
+	// create pizza and calculate cost
+	const newToppingsArray = [];
+	inputtedToppingsArray.forEach(function(element) {
+		newToppingsArray.push(element.value);
+	});
+	// use forEach to display toppings in pizza object
+	let newPizza = new Pizza(newToppingsArray, inputtedSize);
 	newPizza.calculateCost();
+	// after cost is calculated, display cost
+	document.querySelector("div#pizza-cost").removeAttribute("class");
 	console.log(newPizza);
+	// displayPizzaCost();
 }
 
 window.addEventListener("load", function() {
