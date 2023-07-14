@@ -5,23 +5,23 @@ function Pizza(toppings, size) {
 }
 
 Pizza.prototype.calculateCost = function() {
-	if (this.size === "small") {
-		this.cost += 14;
-	} else if (this.size === "medium") {
-		this.cost += 16;
-	} else if (this.size === "large") {
-		this.cost += 18;
-	} else if (this.size === "extra large")
-		this.cost += 20;
-	if (this.toppings.includes("pepperoni") && this.toppings.includes("sausage") && this.toppings.includes("pineapple")) {
-		this.cost += 3;
-	} else if (this.toppings.includes("pepperoni") && this.toppings.includes("sausage") || this.toppings.includes("pineapple") && this.toppings.includes("sausage") || this.toppings.includes("pineapple") && this.toppings.includes("pepperoni")) {
-		this.cost += 2;
-	} else if (this.toppings.includes("pepperoni") || this.toppings.includes("sausage") || this.toppings.includes("pineapple")) {
-		this.cost += 1;
+		if (this.size === "small") {
+			this.cost += 14;
+		} else if (this.size === "medium") {
+			this.cost += 16;
+		} else if (this.size === "large") {
+			this.cost += 18;
+		} else if (this.size === "extra large")
+			this.cost += 20;
+		if (this.toppings.includes("pepperoni") && this.toppings.includes("sausage") && this.toppings.includes("pineapple")) {
+			this.cost += 3;
+		} else if (this.toppings.includes("pepperoni") && this.toppings.includes("sausage") || this.toppings.includes("pineapple") && this.toppings.includes("sausage") || this.toppings.includes("pineapple") && this.toppings.includes("pepperoni")) {
+			this.cost += 2;
+		} else if (this.toppings.includes("pepperoni") || this.toppings.includes("sausage") || this.toppings.includes("pineapple")) {
+			this.cost += 1;
+		}
+		return this.cost;
 	}
-	return this.cost;
-}
 
 function handleFormSubmission(event) {
 	event.preventDefault();
